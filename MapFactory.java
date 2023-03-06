@@ -14,21 +14,21 @@ public class MapFactory {
 	 * Crea una instancia de un Map, según la elección del usuario.
 	 * @param type 
 	 */
-	public Map<String, String> getInstance(int type) {
+	public Map<String, ArrayList<String>> getInstance(int type) {
 		
-		Map<String, String> mapInstance;
+		Map<String, ArrayList<String>> mapInstance;
 		
 		switch (type) {
 		case 1:{
-			mapInstance = new HashMap<String, String>();
+			mapInstance = new HashMap<String, ArrayList<String>>();
 		}break;
 		
 		case 2:{
-			mapInstance = new TreeMap<String, String>();
+			mapInstance = new TreeMap<String, ArrayList<String>>();
 		}break;
 		
 		case 3:{
-			mapInstance = new LinkedHashMap<String, String>();
+			mapInstance = new LinkedHashMap<String, ArrayList<String>>();
 		}break;
 
 		default:{
