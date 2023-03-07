@@ -25,10 +25,21 @@ public class Principal {
         
         int tipo = 0;
         String menu = "--------------------TIENDA ONLINE--------------------\nIndique la implementación deseada para el map (número):\n1. HashMap\n2. TreeMap\n3. LinkedHashMap";
+        boolean seguir = true;
         
-        System.out.println(menu);
-        tipo = teclado.nextInt();
-        teclado.nextLine();
+        while (seguir){
+            System.out.println(menu);
+            tipo = teclado.nextInt();
+            teclado.nextLine();
+
+            if (tipo > 0 && tipo < 4){
+                seguir = false;
+            }
+            else{
+                System.out.println("Ingrese un número válido\n");
+            }
+
+        }
         
         Inventario inventario = new Inventario(tipo);
         inventario.guardarDatos(lineasDatos);
