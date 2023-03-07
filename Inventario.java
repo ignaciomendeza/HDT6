@@ -83,25 +83,57 @@ public class Inventario {
 
     public String mostrarProductos(){
         String resultado = "";
-        ArrayList<String> valores;
+        int count = 0;
+        String producto = "";
+        ArrayList<String> values;
         for (Map.Entry<String, ArrayList<String>> entry : bag.entrySet()){
-            valores = entry.getValue();
-            for (String producto : valores){
-                resultado = resultado + "\n" + producto + ":\n   - Categoría: " + entry.getKey() + "\n";
+            values = new ArrayList<String>();
+            ArrayList<String> valores = entry.getValue();;
+            for (int i = 0; i<valores.size(); i++){
+                count = 1;
+                producto = valores.get(i);
+                valores.remove(i);
+                values.add(producto);
+
+                for (int j = 0; j<valores.size(); j++){
+                    if (valores.get(j).equalsIgnoreCase(producto)){
+                        values.add(valores.get(j));
+                        valores.remove(j);
+                        count++;
+                    }
+                }
+                resultado = resultado + "\n" + producto + ":\n   - Categoría: " + entry.getKey() + "\n   - Cantidad: " + count + "\n";
             } 
+            entry.setValue(values);
         }
         return resultado;
     }
 
     public String mostrarProductosO(){
         String resultado = "";
-        ArrayList<String> valores;
+        int count = 0;
+        String producto = "";
+        ArrayList<String> values;
         for (Map.Entry<String, ArrayList<String>> entry : bag.entrySet()){
-            valores = entry.getValue();
+            values = new ArrayList<String>();
+            ArrayList<String> valores = entry.getValue();;
             resultado = resultado + "\n" + entry.getKey() + ":\n";
-            for (String producto : valores){
-                resultado = resultado + "   - " + producto + "\n";
-            } 
+            for (int i = 0; i<valores.size(); i++){
+                count = 1;
+                producto = valores.get(i);
+                valores.remove(i);
+                values.add(producto);
+
+                for (int j = 0; j<valores.size(); j++){
+                    if (valores.get(j).equalsIgnoreCase(producto)){
+                        values.add(valores.get(j));
+                        valores.remove(j);
+                        count++;
+                    }
+                }
+                resultado = resultado + "   - " + producto + ", Cantidad: " + count + "\n";
+            }
+            entry.setValue(values);
         }
         return resultado;
     }
